@@ -97,7 +97,7 @@ class Kohana_Email {
 	 */
 	public function __construct($name, array $config)
 	{
-		if ( ! class_exists('Swift_Mailer', FALSE))
+		if ( ! class_exists('Swift', FALSE))
 		{
 			// Load SwiftMailer
 			require Kohana::find_file('vendor', 'swiftmailer/lib/swift_required');
