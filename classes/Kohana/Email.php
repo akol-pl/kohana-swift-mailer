@@ -116,7 +116,7 @@ class Kohana_Email {
 				$port = empty($config['options']['port']) ? 25 : (int) $config['options']['port'];
 
 				// Create SMTP Transport
-				$transport = Swift_SmtpTransport::newInstance($config['options']['hostname'], $port);
+				$transport = new Swift_SmtpTransport($config['options']['hostname'], $port);
 
 				if ( ! empty($config['options']['encryption']))
 				{
@@ -134,11 +134,11 @@ class Kohana_Email {
 
 			default:
 				// Use the native connection
-				$transport = Swift_MailTransport::newInstance($config['options']);
+				$transport = new Swift_MailTransport($config['options']);
 				break;
 		}
 
-		$this->_connection = Swift_Mailer::newInstance($transport);
+		$this->_connection = new Swift_Mailer($transport);
 	}
 
 	/**
